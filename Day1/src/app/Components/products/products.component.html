@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <app-side-menu class="col-lg-4  bg-info"></app-side-menu>
+    <div class="col-lg-8">
+
+      <!-- b. In the Component HTML:
+      (1) <h1> tag to display store name (Use angular Expression
+        {{}}).
+        (2) <img> tag to display store logo .
+        (3) Show all values of interface with any tags. -->
+      <h1>Stroe Name : {{ourStore.Name}}</h1>
+      <img src={{ourStore.Logo}} style="width:60px" />
+      <ul> Our Branches
+        <li *ngFor="let branch of ourStore.Branches">{{branch}}</li>
+      </ul>
+
+      <h1> Our Products</h1>
+      <h2>Product Id :{{newProduct.ID}}</h2>
+      <h2>Product Name :{{newProduct.Name}}</h2>
+      <h2>Product Quantity :{{newProduct.Quantity}}</h2>
+      <h2>Product Price : {{newProduct.Price}}</h2>
+      <img src={{newProduct.Img}} style="width:60px" />
+      <h2>Product Category :{{newProduct.CateogryID}}</h2>
+
+
+
+    </div>
+  </div>
+</div>
