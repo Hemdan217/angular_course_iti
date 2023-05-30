@@ -1,0 +1,23 @@
+<!-- Data Binding -->
+<!-- interpolation {{}} -->
+<!-- <h1>{{pageTitle}}</h1> -->
+<!-- <h1>{{sayHello()}}</h1> -->
+
+<!-- test model => class -->
+<p>Class Model</p>
+<h2>{{trackClass.trackName}}</h2>
+<img src="{{trackClass.trackImage}}" class="img-fluid">
+
+<!-- <p>{{trackClass.trackCourses[0]}}</p>
+<p>{{trackClass.trackCourses[1]}}</p> -->
+<!-- for of -->
+<ul>
+  <li *ngFor="let course of trackClass.trackCourses">{{course}}</li>
+</ul>
+
+<!-- test model => interface -->
+<p>Interface Model</p>
+<h1>{{track.trackName}}</h1>
+<h3>{{track.trackNum}}</h3>
+<!-- buit in variables => index -->
+<h4 *ngFor="let c of track.trackCourses">Course Name: {{c}}</h4>

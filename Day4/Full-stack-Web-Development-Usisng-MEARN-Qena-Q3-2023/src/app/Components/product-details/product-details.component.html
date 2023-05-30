@@ -1,0 +1,44 @@
+<div class="container">
+  <!-- <div class="row mb-4" *ngIf="product">
+    <div class="col-sm-6">
+
+      <img [src]="product.PrdimgURL" class="img-fluid">
+    </div>
+    <div class="col-sm-6">
+
+      <h2>Product Details</h2>
+      <h3>{{product.name}}</h3>
+      <h3>{{product.Details}}</h3>
+      <h5>Price: {{product.price | currency}}</h5>
+      <h5>Material: {{product.Material}}</h5>
+    </div>
+  </div> -->
+
+  <div class="row mb-4">
+    <div class="col-sm-6">
+
+      <h3>
+        <ng-container [ngSwitch]="product?.quantity">
+          <ng-container *ngSwitchCase="0"><h3 class="text-danger">Out Of Stock</h3></ng-container>
+          <ng-container *ngSwitchCase="1">Last One Item!!</ng-container>
+          <ng-container *ngSwitchCase="2">Last 2 Item!!</ng-container>
+          <ng-container *ngSwitchCase="3">Last 3 Item!!</ng-container>
+          <ng-container *ngSwitchDefault>In Stock</ng-container>
+        </ng-container>
+      </h3>
+      <img [src]="product?.PrdimgURL" class="img-fluid">
+    </div>
+    <div class="col-sm-6">
+
+      <h2>Product Details</h2>
+      <h3>{{product?.name}}</h3>
+      <h3>{{product?.Details}}</h3>
+      <h5>Price: {{product?.price | currency}}</h5>
+      <h5>Material: {{product?.Material}}</h5>
+    </div>
+  </div>
+</div>
+
+
+
+<button class="button-91" (click)="backToProducts()">Back</button>

@@ -1,0 +1,23 @@
+<ng-container *ngIf="product">
+  <div class="detail-container">
+
+    <img src={{product.PrdimgURL}} alt="" class="w-20">
+    <div>
+      <h1>
+        {{ product.name }}
+      </h1>
+      <h3>
+        {{ product.price }}$
+      </h3>
+
+      <div style="text-align:center">
+
+
+
+      </div>
+      <a class="nav-link btn btn-primary p-4" [routerLink]="['/' ]">
+        Back to Home
+      </a>
+    </div>
+  </div>
+</ng-container>

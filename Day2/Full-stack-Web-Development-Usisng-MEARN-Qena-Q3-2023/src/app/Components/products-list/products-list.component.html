@@ -1,0 +1,74 @@
+<button class="btn btn-primary mb-3" (click)="toggleImage()">
+  {{showImage?'Hide':'Show'}} Image
+</button>
+
+
+<div class="row">
+
+
+  <div class="row">
+    <div class="col-md-2">Filter By: </div>
+    <!-- <div class="col-md-4"><input type="text" class="form-control" [value]="userName"> </div> -->
+    <!-- <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="userName"> </div> -->
+    <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="listFilter"> </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Filter By Value: {{listFilter}}</h4>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- class binding -->
+  <!-- <div class="col-sm-4" *ngFor="let item of productsList" [class.text-danger]="item.price>15000" [class.bg-info]="item.price>10000"> -->
+
+  <!-- style binding -->
+  <!-- ternary operator -->
+  <!-- <div class="col-sm-4" *ngFor="let item of productsList" [style.color]="(item.price>20000)?'lightblue':'lightgray'" [style.background-color]="(item.price>20000)?'red':'blue'"> -->
+
+
+  <!-- attributes directive => ngClass,ngStyle -->
+  <!-- <div class="col-sm-4 mb-4" *ngFor="let item of productsList"> -->
+  <!-- <div class="col-sm-4 mb-4" *ngFor="let item of filteredProducts" [ngClass]="{'text-warning':item.price>12000,'bg-primary':item.price>12000}"> -->
+  <!-- <div class="col-sm-4 mb-4" *ngFor="let item of filteredProducts" [ngStyle]="{'color':(item.price<12000)?'red':'green','background-color':(item.price<12000)?'lightgray':'lightblue'}"> -->
+
+
+  <!-- virtual containers => ng-container  , ng-template  -->
+  <!-- <div class="col-sm-4 mb-4" *ngFor="let item of filteredProducts" *ngIf="item.price>12000">error -->
+  <ng-container *ngFor="let item of filteredProducts">
+    <!-- <div class="col-sm-4 mb-4" *ngIf="item.price>12000"> -->
+    <div class="col-sm-4 mb-4">
+      <!-- <img src="{{item.PrdimgURL}}" class="img-fluid"> -->
+
+      <!-- property binding -->
+      <img [src]="item.PrdimgURL" class="img-fluid" *ngIf="showImage">
+      <h4>{{item.name}}</h4>
+      <h5>{{item.price}}</h5>
+      <!-- <div> -->
+      <!-- <div [ngSwitch]="item.categoryID">
+          <div *ngSwitchCase="1">Tables</div>
+          <div *ngSwitchCase="2">Chairs</div>
+          <div *ngSwitchCase="3">TV Units</div>
+
+        </div> -->
+      <div>
+        <ng-container [ngSwitch]="item.categoryID">
+          <ng-container *ngSwitchCase="1">Tables</ng-container>
+          <ng-container *ngSwitchCase="2">Chairs</ng-container>
+          <ng-container *ngSwitchCase="3">TV Units</ng-container>
+
+        </ng-container>
+
+      </div>
+
+      <div>
+        <ng-container *ngIf="item.quantity>0;else outOfStockVar">In Stock</ng-container>
+        <!-- template reference -->
+        <ng-template #outOfStockVar>Out OF Stock</ng-template>
+      </div>
+      <button class="btn btn-danger" [disabled]="item.quantity==0">Add to Cart<i
+          class="fa-sharp fa-solid fa-cart-plus"></i></button>
+    </div>
+  </ng-container>
+</div>
